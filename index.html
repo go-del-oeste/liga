@@ -6,244 +6,178 @@
   <title>Liga Go Extremeña — Seguimiento</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Pequeñas mejoras visuales */
-    .placeholder-img{background:#f3f4f6;display:inline-block;width:56px;height:56px;border-radius:6px;align-items:center;justify-content:center;display:flex;color:#9ca3af}
+    .placeholder-img{background:#f3f4f6;display:inline-block;width:40px;height:40px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-weight:bold}
     .card{background:white;border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 p-6">
   <div class="max-w-5xl mx-auto">
-    <header class="mb-6">
-      <h1 class="text-3xl font-bold">Liga Go Extremeña</h1>
-      <p class="text-sm text-gray-500">Página simple para seguir la liga. Actualiza <code>league.md</code> en el repositorio para cambiar datos.</p>
+    <header class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+      <div>
+        <h1 class="text-3xl font-bold">Liga Go Extremeña</h1>
+        <p class="text-sm text-gray-500">Selecciona una liga y navega por las jornadas</p>
+      </div>
+      <select id="leagueSelector" class="border rounded p-1 text-sm w-40">
+        <option value="temporada24.md">Temporada 24</option>
+        <option value="temporada25.md" selected>Temporada 25</option>
+      </select>
     </header>
 
-    <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <section id="nextMatches" class="md:col-span-2">
-        <div class="card">
-          <h2 class="text-xl font-semibold mb-2">Partidas próximas</h2>
-          <div id="nextList" class="space-y-2">Cargando...</div>
-        </div>
+    <section id="navigation" class="flex justify-between items-center mb-4">
+      <button id="prevJornada" class="px-3 py-1 bg-gray-200 rounded text-sm">◀ Jornada anterior</button>
+      <div id="jornadaTitle" class="font-semibold text-lg">Cargando...</div>
+      <button id="nextJornada" class="px-3 py-1 bg-gray-200 rounded text-sm">Siguiente jornada ▶</button>
+    </section>
 
-        <div class="mt-4 card">
-          <h2 class="text-xl font-semibold mb-2">Partidas pasadas</h2>
-          <div id="pastList" class="space-y-2">Cargando...</div>
-        </div>
+    <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section id="matchesSection" class="md:col-span-2">
+        <div id="matchesContainer" class="space-y-4"></div>
       </section>
 
       <aside>
         <div class="card">
           <h2 class="text-xl font-semibold mb-2">Clasificación</h2>
-          <div id="standings">Cargando...</div>
-        </div>
-
-        <div class="mt-4 card">
-          <h3 class="font-medium mb-2">Equipos</h3>
-          <div id="teamsList" class="space-y-2">Cargando...</div>
+          <div id="standings" class="text-sm">Cargando...</div>
         </div>
       </aside>
     </main>
 
-    <footer class="mt-6 text-xs text-gray-500">Formato de datos: <code>league.md</code>. Cambia el archivo en GitHub y la página leerá los datos. (Ver instrucciones en el repositorio)</footer>
+    <footer class="mt-6 text-xs text-gray-500">
+      Formato de datos: Jugadores y Jornadas en tablas Markdown. Actualiza el archivo <code>ligaXX.md</code> en el repositorio.
+    </footer>
   </div>
 
 <script>
-/*
-  INSTRUCCIONES y EJEMPLO de league.md (cópialo en tu repo como league.md)
-
-  ## Teams
-  - id|ShortName|Full Name|images/team-id.png
-  - 1|Alange|Club Go Alange|images/alange.png
-  - 2|Coria|Go Coria|images/coria.png
-  (la imagen es opcional; si no existe se muestra un placeholder)
-
-  ## Matches
-  - 2025-10-11 18:30 | 1 vs 2 |    <-- partida sin resultado (próxima)
-  - 2025-09-28 19:00 | 2 vs 1 | 2-1  <-- partida pasada con resultado (goles locales - visitantes)
-  - 2025-10-05 20:00 | 1 vs 3 | 0-0
-
-  ## Standings  (OPCIONAL)
-  - 1|Alange|0|0|0|0|0|0|0  <-- si incluyes tabla manual (id|Name|PJ|G|E|P|GF|GC|Pts)
-
-  Nota: Si no incluyes sección Standings la página calculará la clasificación a partir de los resultados que sí tengan marcador.
-*/
-
-// Utilidades de parseado
-function parseLeague(md){
+function parseMarkdownTables(md){
   const sections = {};
+  let current = null;
   const lines = md.split(/\n/);
-  let cur = null;
-  for(const raw of lines){
-    const line = raw.trim();
-    if(line.startsWith('## ')){
-      cur = line.slice(3).trim();
-      sections[cur] = [];
-    }else if(cur && line.length){
-      sections[cur].push(line);
-    }
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('## ')) { current = trimmed.slice(3).trim(); sections[current]=[]; }
+    else if (trimmed.startsWith('### ')) { current = trimmed.slice(4).trim(); sections[current]=[]; }
+    else if(current && trimmed.length) { sections[current].push(trimmed); }
   }
   return sections;
 }
 
-function parseTeams(lines){
-  // - id|Short|Full|img
-  const teams = {};
-  for(const l of lines){
-    if(!l.startsWith('-')) continue;
-    const content = l.replace(/^-\s*/,'');
-    const parts = content.split('|').map(s=>s.trim());
-    const id = parts[0];
-    teams[id] = {id, short:parts[1]||(`T${id}`), name:parts[2]||parts[1]||(`Team ${id}`), img:parts[3]||null};
+function parseTable(lines) {
+    console.log('Parsing table:', lines);
+  const cleanLines = lines.map(l=>l.trim()).filter(l=>l && l.startsWith('|'));
+  if(cleanLines.length<2) return [];
+  const headers = cleanLines[0].split('|').map(s=>s.trim()).filter(Boolean);
+  const data=[];
+  for(const l of cleanLines.slice(2)) {
+    const cells = l.split('|').map(s=>s.trim()).slice(1, -1);
+    console.log('Row cells:', headers, cells);
+    if(cells.length===headers.length){ const row={}; headers.forEach((h,i)=>row[h]=cells[i]); data.push(row); }
+    console.log('data:', data);
   }
-  return teams;
+  return data;
 }
 
-function parseMatches(lines){
-  // - YYYY-MM-DD HH:MM | home vs away | score(optional)
-  const matches = [];
-  for(const l of lines){
-    if(!l.startsWith('-')) continue;
-    const content = l.replace(/^-\s*/,'');
-    const parts = content.split('|').map(s=>s.trim());
-    const when = parts[0];
-    const vs = parts[1]||'';
-    const score = parts[2]||'';
-    const vsMatch = vs.match(/(\d+)\s*vs\s*(\d+)/i);
-    if(!vsMatch) continue;
-    const home = vsMatch[1];
-    const away = vsMatch[2];
-    let homeScore=null, awayScore=null;
-    const scoreMatch = score.match(/(\d+)\s*-\s*(\d+)/);
-    if(scoreMatch){ homeScore = parseInt(scoreMatch[1]); awayScore = parseInt(scoreMatch[2]); }
-    // parse date (assume local timezone)
-    const dt = new Date(when.replace(' ','T'));
-    matches.push({raw:content, when:dt, whenText:when, home, away, homeScore, awayScore});
-  }
-  return matches.sort((a,b)=>a.when - b.when);
-}
-
-function parseStandings(lines){
-  // Optional manual standings lines: - id|Name|PJ|G|E|P|GF|GC|Pts
-  const rows = [];
-  for(const l of lines){
-    if(!l.startsWith('-')) continue;
-    const c = l.replace(/^-\s*/,'');
-    const p = c.split('|').map(s=>s.trim());
-    if(p.length >= 9){
-      rows.push({id:p[0], name:p[1], pj:+p[2], w:+p[3], d:+p[4], l:+p[5], gf:+p[6], gc:+p[7], pts:+p[8]});
-    }
-  }
-  return rows;
-}
-
-function computeStandingsFromMatches(matches, teams){
-  const tbl = {};
-  Object.values(teams).forEach(t=>{ tbl[t.id] = {id:t.id, name:t.short||t.name, pj:0,w:0,d:0,l:0,gf:0,gc:0,pts:0}; });
-  for(const m of matches){
-    if(m.homeScore==null || m.awayScore==null) continue; // skip incomplete
-    const h = tbl[m.home];
-    const a = tbl[m.away];
-    if(!h || !a) continue;
-    h.pj++; a.pj++;
-    h.gf += m.homeScore; h.gc += m.awayScore;
-    a.gf += m.awayScore; a.gc += m.homeScore;
-    if(m.homeScore > m.awayScore){ h.w++; a.l++; h.pts += 3; }
-    else if(m.homeScore < m.awayScore){ a.w++; h.l++; a.pts += 3; }
-    else { h.d++; a.d++; h.pts += 1; a.pts +=1; }
-  }
-  const arr = Object.values(tbl);
-  arr.sort((x,y)=>{
-    if(y.pts !== x.pts) return y.pts - x.pts;
-    const gdY = y.gf - y.gc; const gdX = x.gf - x.gc;
-    if(gdY !== gdX) return gdY - gdX;
-    if(y.gf !== x.gf) return y.gf - x.gf;
-    return x.name.localeCompare(y.name);
-  });
-  return arr;
-}
-
-function renderTeams(teams){
-  const el = document.getElementById('teamsList'); el.innerHTML='';
-  for(const t of Object.values(teams)){
-    const d = document.createElement('div'); d.className='flex items-center gap-3';
-    const img = document.createElement('img'); img.width=40; img.height=40; img.alt=t.short;
-    img.style.borderRadius='6px';
-    if(t.img){ img.src = t.img; img.onerror = ()=>{ img.style.display='none'; d.querySelector('.placeholder-img').style.display='flex'; } }
-    else img.style.display='none';
-    const ph = document.createElement('div'); ph.className='placeholder-img'; ph.textContent = t.short.slice(0,2).toUpperCase();
-    const info = document.createElement('div'); info.innerHTML = `<div class="font-medium">${t.short}</div><div class="text-xs text-gray-500">${t.name}</div>`;
-    d.appendChild(img); d.appendChild(ph); d.appendChild(info);
-    el.appendChild(d);
-  }
-}
-
-function renderMatches(matches, teams){
-  const now = new Date();
-  const next = matches.filter(m=>m.when > now);
-  const past = matches.filter(m=>m.when <= now).slice().reverse();
-
-  const nextList = document.getElementById('nextList'); nextList.innerHTML='';
-  if(next.length===0) nextList.innerHTML = '<div class="text-sm text-gray-500">No hay partidas próximas.</div>';
-  for(const m of next.slice(0,20)){
-    const el = document.createElement('div'); el.className='flex items-center justify-between gap-3 p-2 border rounded';
-    const left = document.createElement('div'); left.className='flex items-center gap-3';
-    const h = teams[m.home]||{short:m.home}; const a = teams[m.away]||{short:m.away};
-    left.innerHTML = `<div class=\"text-sm\">${m.whenText}</div><div class=\"ml-3 text-sm\"><strong>${h.short}</strong> vs <strong>${a.short}</strong></div>`;
-    el.appendChild(left);
-    const right = document.createElement('div'); right.className='text-xs text-gray-500'; right.textContent = (m.homeScore==null? 'Pendiente' : `${m.homeScore}-${m.awayScore}`);
-    el.appendChild(right);
-    nextList.appendChild(el);
-  }
-
-  const pastList = document.getElementById('pastList'); pastList.innerHTML='';
-  if(past.length===0) pastList.innerHTML = '<div class="text-sm text-gray-500">No hay partidas pasadas.</div>';
-  for(const m of past.slice(0,50)){
-    const el = document.createElement('div'); el.className='flex items-center justify-between gap-3 p-2 border rounded';
-    const h = teams[m.home]||{short:m.home}; const a = teams[m.away]||{short:m.away};
-    el.innerHTML = `<div><div class="text-sm">${m.whenText}</div><div class="text-sm"><strong>${h.short}</strong> ${m.homeScore!=null?m.homeScore:'-'} - ${m.awayScore!=null?m.awayScore:'-'} <strong>${a.short}</strong></div></div><div class="text-xs text-gray-500">${m.homeScore==null? 'Sin resultado' : 'Finalizado'}</div>`;
-    pastList.appendChild(el);
-  }
-}
+function renderPlayers(players){ const map={}; players.forEach(p=>map[p.id]=p); return map; }
 
 function renderStandings(rows){
-  const el = document.getElementById('standings'); el.innerHTML='';
-  if(!rows || rows.length===0){ el.innerHTML = '<div class="text-sm text-gray-500">Sin datos de clasificación.</div>'; return; }
-  const table = document.createElement('table'); table.className='w-full text-sm';
-  const h = document.createElement('thead'); h.innerHTML = `<tr class="text-left text-xs text-gray-500"><th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>Pts</th></tr>`;
-  table.appendChild(h);
-  const b = document.createElement('tbody');
+  const el=document.getElementById('standings'); el.innerHTML='';
+  if(!rows.length){ el.textContent='Sin datos'; return; }
+  const table=document.createElement('table'); table.className='w-full text-sm';
+  table.innerHTML=`<thead><tr class='text-xs text-gray-500 text-left'><th>#</th><th>Jugador</th><th>PJ</th><th>G</th><th>P</th><th>Diff</th><th>Pts</th></tr></thead>`;
+  const tb=document.createElement('tbody');
   rows.forEach((r,i)=>{
-    const tr = document.createElement('tr'); tr.className='border-t';
-    tr.innerHTML = `<td class="py-1">${i+1}</td><td>${r.name}</td><td>${r.pj}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gf}</td><td>${r.gc}</td><td><strong>${r.pts}</strong></td>`;
-    b.appendChild(tr);
+    const tr=document.createElement('tr'); tr.className='border-t';
+    tr.innerHTML=`<td>${i+1}</td><td>${r.Nombre}</td><td>${r.PJ}</td><td>${r.G}</td><td>${r.P}</td><td>${r.Diff}</td><td><strong>${r.Pts}</strong></td>`;
+    tb.appendChild(tr);
   });
-  table.appendChild(b);
-  el.appendChild(table);
+  table.appendChild(tb); el.appendChild(table);
 }
 
-async function loadAndRender(){
-  let md = null;
-  try{
-    const resp = await fetch('league.md');
-    if(!resp.ok) throw new Error('no league.md');
-    md = await resp.text();
-  }catch(e){
-    // fallback: ejemplo embebido para que la página funcione incluso sin archivo
-    //md = `## Teams\n- 1|Alange|Club Go Alange|images/alange.png\n- 2|Coria|Go Coria|images/coria.png\n- 3|Plasencia|Go Plasencia|\n\n## Matches\n- 2025-10-11 18:30 | 1 vs 2 |\n- 2025-09-28 19:00 | 2 vs 1 | 2-1\n- 2025-10-05 20:00 | 1 vs 3 | 0-0\n\n## Standings\n- 1|Alange|3|2|1|0|5|2|7\n- 2|Coria|3|1|0|2|3|4|3\n- 3|Plasencia|3|0|1|2|1|3|1\`;
+function computeStandings(sections, players){
+  const stats={}; Object.values(players).forEach(p=>stats[p.id]={id:p.id,Nombre:p.Nombre,PJ:0,G:0,P:0,Diff:0,Pts:0});
+  Object.keys(sections).filter(k=>k.toLowerCase().includes('jornada')).forEach(jk=>{
+    const matches=parseTable(sections[jk]);
+    matches.forEach(m=>{
+      const res=(m['Resultado']||'').trim(); if(res!=='W'&&res!=='B') return;
+      const white=m['Blanco'], black=m['Negro'];
+      const diff= m['Diferencia']?parseFloat(m['Diferencia']):0
+      stats[white].PJ++; stats[black].PJ++;
+      if(res==='W'){stats[white].G++; stats[white].Pts+=3; stats[white].Diff+=diff; stats[black].P++; stats[black].Diff-=diff;}
+      if(res==='B'){stats[black].G++; stats[black].Pts+=3; stats[black].Diff+=diff; stats[white].P++; stats[white].Diff-=diff;}
+    });
+  });
+  return Object.values(stats).sort((a,b)=>b.Pts-a.Pts||b.Diff-a.Diff||a.Nombre.localeCompare(b.Nombre));
+}
+
+function renderJornada(jornadaName, matches, players){
+  const container=document.getElementById('matchesContainer'); container.innerHTML='';
+  const card=document.createElement('div'); card.className='card';
+  //card.innerHTML=`<h2 class='text-xl font-semibold mb-2'>${jornadaName}</h2>`;
+  const list=document.createElement('div'); list.className='space-y-2';
+  const table=parseTable(matches);
+  table.forEach(m=>{
+  const el=document.createElement('div'); el.className='border rounded p-2';
+  const wb=players[m['Blanco']]?.Nombre||m['Blanco'];
+  const wn=players[m['Negro']]?.Nombre||m['Negro'];
+  const wbImg=players[m['Blanco']]?.Imagen||'';
+  const wnImg=players[m['Negro']]?.Imagen||'';
+  const res=(m['Resultado']||'').trim();
+  const diff=m['Diferencia']?` +${m['Diferencia']}`:''
+  const winner=res==='W'?`Ganó: <strong>${wb}</strong> ${diff}`:res==='B'?`Ganó: <strong>${wn}</strong> ${diff}`:'Pendiente';
+
+  el.innerHTML=`
+    <div class='text-center mt-1'>${m['Fecha']}</div>
+    <div class='flex items-center justify-between w-full'>
+      <div class='flex items-center gap-2'>
+        ${wbImg?`<img src='${wbImg}' class='w-24 h-24 rounded-full border' alt='${wb}'>`:''}
+        <strong>${wb}</strong> <div class="text-2xl">⚪</div>
+      </div>
+      <span>vs</span>
+      <div class='flex items-center gap-2'>
+       <div class="text-2xl">⚫</div> <strong>${wn}</strong>  ${wnImg?`<img src='${wnImg}' class='w-24 h-24 rounded-full border' alt='${wn}'>`:''}
+        
+      </div>
+    </div>
+    <div class='text-center mt-1'>${winner}</div>
+    <div class='text-gray-500'>${m['Observaciones']||''}</div>
+  `;
+  list.appendChild(el);
+});
+card.appendChild(list); 
+container.appendChild(card);
+}
+
+
+async function loadLeague(file){
+  let md='';
+  try{ const resp=await fetch(file); if(!resp.ok) throw 0; md=await resp.text(); } catch{ md=`## Jugadores\n| id | Nombre | Imagen |\n|----|---------|--------|\n| 1 | Juan | |\n| 2 | Ana | |\n\n## Jornadas\n### Jornada 1\n| Fecha | Blanco | Negro | Resultado | Observaciones |\n|--------|---------|--------|------------|----------------|\n| 2025-10-11 18:30 | 1 | 2 | | Ejemplo |`;}
+  const sections=parseMarkdownTables(md);
+  const players=parseTable(sections['Jugadores']||[]);
+  const playersMap=renderPlayers(players);
+
+  const jornadaKeys=Object.keys(sections).filter(k=>k.toLowerCase().includes('jornada'));
+  console.log(jornadaKeys)
+  let currentIndex=0;
+  function showJornada(index){
+    if(index<0) index=0; if(index>=jornadaKeys.length) index=jornadaKeys.length-1;
+    currentIndex=index;
+    const key=jornadaKeys[index];
+    document.getElementById('jornadaTitle').textContent=key;
+    renderJornada(key, sections[key], playersMap);
   }
 
-  const sections = parseLeague(md);
-  const teams = parseTeams(sections['Teams']||[]);
-  const matches = parseMatches(sections['Matches']||[]);
-  const manualStand = parseStandings(sections['Standings']||[]);
-  const computedStand = computeStandingsFromMatches(matches, teams);
+  document.getElementById('prevJornada').onclick=()=>showJornada(currentIndex-1);
+  document.getElementById('nextJornada').onclick=()=>showJornada(currentIndex+1);
 
-  renderTeams(teams);
-  renderMatches(matches, teams);
-  renderStandings(manualStand.length? manualStand : computedStand);
+  renderStandings(computeStandings(sections,playersMap));
+  let defaultIndex = 0;
+    jornadaKeys.forEach((k,i)=>{
+        if(k.toLowerCase().includes('actual')) defaultIndex = i;
+    });
+    showJornada(defaultIndex);
 }
 
-loadAndRender();
+document.getElementById('leagueSelector').addEventListener('change',e=>loadLeague(e.target.value));
+loadLeague(document.getElementById('leagueSelector').value);
 </script>
 </body>
 </html>
