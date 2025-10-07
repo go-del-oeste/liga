@@ -19,7 +19,7 @@
 | ---------------- | ------ | ----- | --------- | ------------- | ---------- |
 | 2025-10-06 20:00 | fercho | timon | W         | -             | 32.5       |
 | 2025-10-06 20:00 | jose   | mamen | -         | -             |            |
-| 2025-10-06 20:00 | rolo   | raul  | -         | -             |            |
+| 2025-10-09 17:00 | rolo   | raul  | -         | -             |            |
 | 2025-10-06 20:00 | demi   | mon   | W         | -             | 65.5       |
 
 - 1 [6O] Fercho vs Timón; Jose vs Mamen; Rolo vs Raúl; Demi vs Mon; José Luis
@@ -134,5 +134,6 @@
 - 7 [17N] Fercho vs Rolo; Demi vs Jose; José Luis vs Timón; Mon vs Mamen; Raúl
 
 - 8 [24N] Fercho vs Jose; Rolo vs Timón; Demi vs Mamen; José Luis vs Raúl; Mon
+
 
 - 9 [1D] Jose vs Timón; Rolo vs Mamen;  Demi vs Raúl; José Luis vs Mon; Fercho
