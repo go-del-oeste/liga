@@ -126,7 +126,7 @@ function renderJornada(jornadaName, matches, players){
 
   el.innerHTML=`
     <div class='text-center mt-1'>${m['Fecha']}</div>
-    <div class='flex items-center justify-between w-full'>
+    <div class='flex flex-col sm:flex-row items-center justify-between w-full text-center sm:text-left'>
       <div class='flex items-center gap-2'>
         ${wbImg?`<img src='${wbImg}' class='w-24 h-24 rounded-full border' alt='${wb}'>`:''}
         <strong>${wb}</strong> <div class="text-2xl">⚪</div>
