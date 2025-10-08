@@ -1,15 +1,15 @@
 ## Jugadores
 | id       | Nombre    | Imagen               | Nivel |
 | -------- | --------- | -------------------- | ----- |
-| fercho   | Fercho    | images/boardgame.png | -     |
-| timon    | Timón     | images/boardgame.png | -     |
-| jose     | Jose      | images/boardgame.png | -     |
-| mamen    | Mamen     | images/mamen.jpg     | -     |
-| rolo     | Rolo      | images/rolo.jpg      | -     |
-| raul     | Raúl      | images/raul.jpg      | -     |
-| demi     | Demi      | images/boardgame.png | -     |
-| mon      | Mon       | images/boardgame.png | -     |
-| joseluis | Jose Luis | images/boardgame.png | -     |
+| fercho   | Fercho    | images/fercho.png    | 10k   |
+| timon    | Timón     | images/timon.png     | 15k   |
+| jose     | Jose      | images/jose.png      | 6k    |
+| mamen    | Mamen     | images/mamen.png     | 16k   |
+| rolo     | Rolo      | images/rolo.jpg      | 15k   |
+| raul     | Raúl      | images/raul.jpg      | 10k   |
+| demi     | Demi      | images/boardgame.png | 7k    |
+| mon      | Mon       | images/mon.png       | 14k   |
+| joseluis | Jose Luis | images/boardgame.png | 17k   |
 
 
 ## Calendario
@@ -17,123 +17,97 @@
 ### Jornada 1 Actual (2025-10-06)
 | Fecha            | Blanco | Negro | Resultado | Observaciones | Diferencia |
 | ---------------- | ------ | ----- | --------- | ------------- | ---------- |
-| 2025-10-06 20:00 | fercho | timon | W         |               | 32.5       |
+| 2025-10-06 20:00 | fercho | timon |           |               |            |
 | 2025-10-06 20:00 | jose   | mamen |           |               |            |
-| 2025-10-09 17:00 | rolo   | raul  |           |               |            |
-| 2025-10-06 20:00 | demi   | mon   | W         |               | 65.5       |
+| 2025-10-09 17:00 | raul   | rolo  |           |               |            |
+| 2025-10-06 20:00 | demi   | mon   |           |               |            |
 
-- 1 [6O] Fercho vs Timón; Jose vs Mamen; Rolo vs Raúl; Demi vs Mon; José Luis
+- 1 [6O] Fercho vs Timón; Jose vs Mamen; Raúl vs Rolo; Demi vs Mon; José Luis descansa
 
 
 ### Jornada 2 (2025-10-13)
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- |
-| 2025-10-13 20:00 | fercho | mamen    |           |               |            |
-| 2025-10-13 20:00 | timon  | raul     |           |               |            |
-| 2025-10-13 20:00 | jose   | mon      |           |               |            |
-| 2025-10-13 20:00 | rolo   | joseluis |           |               |            |
+| 2025-10-13 20:00 | mon    | joseluis |           |               |            |
+| 2025-10-13 20:00 | demi   | jose     |           |               |            |
+| 2025-10-13 20:00 | raul   | fercho   |           |               |            |
+| 2025-10-13 20:00 | rolo   | mamen    |           |               |            |
 
-- 2 [13O] Fercho vs Mamen; Timón vs Raúl; Jose vs Mon; Rolo vs José Luis; Demi
+- 2 [13O] Mon vs José Luis; Demi vs Jose; Raúl vs Fercho; Rolo vs Mamen; Timón descansa
 
 
 ### Jornada 3 (2025-10-20)
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- |
-| 2025-10-20 20:00 | fercho | raul     |           |               |            |
-| 2025-10-20 20:00 | mamen  | mon      |           |               |            |
 | 2025-10-20 20:00 | timon  | joseluis |           |               |            |
-| 2025-10-20 20:00 | jose   | demi     |           |               |            |
+| 2025-10-20 20:00 | jose   | mon      |           |               |            |
+| 2025-10-20 20:00 | demi   | rolo     |           |               |            |
+| 2025-10-20 20:00 | fercho | mamen    |           |               |            |
 
-- 3 [20O] Fercho vs Raúl; Mamen vs Mon; Timón vs José Luis; Jose vs Demi; Rolo
+- 3 [20O] Timón vs José Luis; Jose vs Mon; Demi vs Rolo; Fercho vs Mamen; Raúl descansa
 
 
 ### Jornada 4 (2025-10-27)
-
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- |
-| 2025-10-27 20:00 | fercho | mon      |           |               |            |
-| 2025-10-27 20:00 | raul   | joseluis |           |               |            |
-| 2025-10-27 20:00 | mamen  | demi     |           |               |            |
-| 2025-10-27 20:00 | timon  | rolo     |           |               |            |
+| 2025-10-27 20:00 | jose   | joseluis |           |               |            |
+| 2025-10-27 20:00 | raul   | timon    |           |               |            |
+| 2025-10-27 20:00 | rolo   | mon      |           |               |            |
+| 2025-10-27 20:00 | fercho | demi     |           |               |            |
 
-- 4 [27O] Fercho vs Mon; Raúl vs José Luis; Mamen vs Demi; Timón vs Rolo; Jose
+- 4 [27O] Jose vs José Luis; Raúl vs Timón; Rolo vs Mon; Fercho vs Demi; Mamen descansa
 
 
 ### Jornada 5 (2025-11-03)
-
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- |
-| 2025-11-03 20:00 | fercho | joseluis |           |               |            |
-| 2025-11-03 20:00 | mon    | demi     |           |               |            |
-| 2025-11-03 20:00 | raul   | rolo     |           |               |            |
-| 2025-11-03 20:00 | mamen  | jose     |           |               |            |
+| 2025-11-03 20:00 | raul   | joseluis |           |               |            |
+| 2025-11-03 20:00 | jose   | rolo     |           |               |            |
+| 2025-11-03 20:00 | timon  | mamen    |           |               |            |
+| 2025-11-03 20:00 | fercho | mon      |           |               |            |
 
-- 5 [3N]Fercho vs José Luis; Mon vs Demi; Raúl vs Rolo; Mamen vs Jose; Timón
+- 5 [3N] Raúl vs José Luis; Jose vs Rolo; Timón vs Mamen; Fercho vs Mon; Demi descansa
+
 
 ### Jornada 6 (2025-11-10)
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
+| ---------------- | ------ | -------- | --------- | ------------- | ---------- |
+| 2025-11-10 20:00 | rolo   | joseluis |           |               |            |
+| 2025-11-10 20:00 | raul   | mamen    |           |               |            |
+| 2025-11-10 20:00 | jose   | fercho   |           |               |            |
+| 2025-11-10 20:00 | demi   | timon    |           |               |            |
 
-| Fecha            | Blanco   | Negro | Resultado | Observaciones | Diferencia |
-| ---------------- | -------- | ----- | --------- | ------------- | ---------- |
-| 2025-11-10 20:00 | fercho   | demi  |           |               |            |
-| 2025-11-10 20:00 | joseluis | rolo  |           |               |            |
-| 2025-11-10 20:00 | mon      | jose  |           |               |            |
-| 2025-11-10 20:00 | raul     | timon |           |               |            |
-
-- 6 [10N] Fercho vs Demi; José Luis vs Rolo; Mon vs Jose; Raúl vs Timón; Mamen
+- 6 [10N] Rolo vs José Luis; Raúl vs Mamen; Jose vs Fercho; Demi vs Timón; Mon descansa
 
 
 ### Jornada 7 (2025-11-17)
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
+| ---------------- | ------ | -------- | --------- | ------------- | ---------- |
+| 2025-11-17 20:00 | mamen  | joseluis |           |               |            |
+| 2025-11-17 20:00 | fercho | rolo     |           |               |            |
+| 2025-11-17 20:00 | demi   | raul     |           |               |            |
+| 2025-11-17 20:00 | mon    | timon    |           |               |            |
 
-| Fecha            | Blanco   | Negro | Resultado | Observaciones | Diferencia |
-| ---------------- | -------- | ----- | --------- | ------------- | ---------- |
-| 2025-11-17 20:00 | fercho   | rolo  |           |               |            |
-| 2025-11-17 20:00 | demi     | jose  |           |               |            |
-| 2025-11-17 20:00 | joseluis | timon |           |               |            |
-| 2025-11-17 20:00 | mon      | mamen |           |               |            |
-
-- 7 [17N] Fercho vs Rolo; Demi vs Jose; José Luis vs Timón; Mon vs Mamen; Raúl
+- 7 [17N] Mamen vs José Luis; Fercho vs Rolo; Demi vs Raúl; Mon vs Timón; Jose descansa
 
 
 ### Jornada 8 (2025-11-24)
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
+| ---------------- | ------ | -------- | --------- | ------------- | ---------- |
+| 2025-11-24 20:00 | fercho | joseluis |           |               |            |
+| 2025-11-24 20:00 | demi   | mamen    |           |               |            |
+| 2025-11-24 20:00 | raul   | mon      |           |               |            |
+| 2025-11-24 20:00 | jose   | timon    |           |               |            |
 
-| Fecha            | Blanco   | Negro | Resultado | Observaciones | Diferencia |
-| ---------------- | -------- | ----- | --------- | ------------- | ---------- |
-| 2025-11-24 20:00 | fercho   | jose  |           |               |            |
-| 2025-11-24 20:00 | rolo     | timon |           |               |            |
-| 2025-11-24 20:00 | demi     | mamen |           |               |            |
-| 2025-11-24 20:00 | joseluis | raul  |           |               |            |
+- 8 [24N] Fercho vs José Luis; Demi vs Mamen; Raúl vs Mon; Jose vs Timón; Rolo descansa
 
-- 8 [24N] Fercho vs Jose; Rolo vs Timón; Demi vs Mamen; José Luis vs Raúl; Mon
 
 ### Jornada 9 (2025-12-01)
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia |
+| ---------------- | ------ | -------- | --------- | ------------- | ---------- |
+| 2025-12-01 20:00 | demi   | joseluis |           |               |            |
+| 2025-12-01 20:00 | mon    | mamen    |           |               |            |
+| 2025-12-01 20:00 | rolo   | timon    |           |               |            |
+| 2025-12-01 20:00 | jose   | raul     |           |               |            |
 
-| Fecha            | Blanco   | Negro | Resultado | Observaciones | Diferencia |
-| ---------------- | -------- | ----- | --------- | ------------- | ---------- |
-| 2025-12-01 20:00 | jose     | timon |           |               |            |
-| 2025-12-01 20:00 | rolo     | mamen |           |               |            |
-| 2025-12-01 20:00 | demi     | raul  |           |               |            |
-| 2025-12-01 20:00 | joseluis | mon   |           |               |            |
-
-- 9 [1D] Jose vs Timón; Rolo vs Mamen;  Demi vs Raúl; José Luis vs Mon; Fercho
-
-
-
-
-- 1 [6O] Fercho vs Timón; Jose vs Mamen; Rolo vs Raúl; Demi vs Mon; José Luis
-
-- 2 [13O] Fercho vs Mamen; Timón vs Raúl; Jose vs Mon; Rolo vs José Luis; Demi
-
-- 3 [20O] Fercho vs Raúl; Mamen vs Mon; Timón vs José Luis; Jose vs Demi; Rolo
-
-- 4 [27O] Fercho vs Mon; Raúl vs José; Luis Mamen vs Demi; Timón vs Rolo; Jose
-
-- 5 [3N]Fercho vs José Luis; Mon vs Demi; Raúl vs Rolo; Mamen vs Jose; Timón
-
-- 6 [10N] Fercho vs Demi; José Luis vs Rolo; Mon vs Jose; Raúl vs Timón; Mamen
-
-- 7 [17N] Fercho vs Rolo; Demi vs Jose; José Luis vs Timón; Mon vs Mamen; Raúl
-
-- 8 [24N] Fercho vs Jose; Rolo vs Timón; Demi vs Mamen; José Luis vs Raúl; Mon
-
-
-- 9 [1D] Jose vs Timón; Rolo vs Mamen;  Demi vs Raúl; José Luis vs Mon; Fercho
+- 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
