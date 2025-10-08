@@ -8,6 +8,13 @@
   <style>
     .placeholder-img{background:#f3f4f6;display:inline-block;width:40px;height:40px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-weight:bold}
     .card{background:white;border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+
+    .winner-glow {
+      position: relative;
+      border-color: rgb(238, 228, 172) !important;
+      box-shadow: 0 0 20px 4px rgb(176, 219, 118);
+      animation: pulseWinner 1.5s infinite;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 p-6">
@@ -15,7 +22,7 @@
     <header class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
       <div>
         <h1 class="text-3xl font-bold">Liga Go Extremeña</h1>
-        <p class="text-sm text-gray-500">Selecciona una liga y navega por las jornadas</p>
+        <!-- <p class="text-sm text-gray-500">Selecciona una liga y navega por las jornadas</p> -->
       </div>
       <select id="leagueSelector" class="border rounded p-1 text-sm w-40">
         <option value="temporada24.md">Temporada 24</option>
@@ -43,7 +50,7 @@
     </main>
 
     <footer class="mt-6 text-xs text-gray-500">
-      Formato de datos: Jugadores y Jornadas en tablas Markdown. Actualiza el archivo <code>ligaXX.md</code> en el repositorio.
+      <!-- Formato de datos: Jugadores y Jornadas en tablas Markdown. Actualiza el archivo <code>ligaXX.md</code> en el repositorio. -->
     </footer>
   </div>
 
@@ -123,17 +130,19 @@ function renderJornada(jornadaName, matches, players){
   const res=(m['Resultado']||'').trim();
   const diff=m['Diferencia']?` +${m['Diferencia']}`:''
   const winner=res==='W'?`Ganó: <strong>${wb}</strong> ${diff}`:res==='B'?`Ganó: <strong>${wn}</strong> ${diff}`:'Pendiente';
+  const winnerClassB = res==='W' ? 'winner-glow' : '';
+  const winnerClassN = res==='B' ? 'winner-glow' : '';
 
   el.innerHTML=`
     <div class='text-center mt-1'>${m['Fecha']}</div>
     <div class='flex flex-col sm:flex-row items-center justify-between w-full text-center sm:text-left'>
       <div class='flex items-center gap-2'>
-        ${wbImg?`<img src='${wbImg}' class='w-24 h-24 rounded-full border' alt='${wb}'>`:''}
+        ${wbImg?`<img src='${wbImg}' class='w-24 h-24 rounded-full border ${winnerClassB}' alt='${wb}'>`:''}
         <strong>${wb}</strong> <div class="text-2xl">⚪</div>
       </div>
       <span>vs</span>
       <div class='flex items-center gap-2'>
-       <div class="text-2xl">⚫</div> <strong>${wn}</strong>  ${wnImg?`<img src='${wnImg}' class='w-24 h-24 rounded-full border' alt='${wn}'>`:''}
+       <div class="text-2xl">⚫</div> <strong>${wn}</strong>  ${wnImg?`<img src='${wnImg}' class='w-24 h-24 rounded-full border ${winnerClassN}' alt='${wn}'>`:''}
         
       </div>
     </div>
