@@ -7,7 +7,7 @@
 | mamen    | Mamen     | images/mamen.png     | 16k   |
 | rolo     | Rolo      | images/rolo.jpg      | 15k   |
 | raul     | Raúl      | images/raul.jpg      | 10k   |
-| demi     | Demi      | images/boardgame.png | 7k    |
+| demi     | Demi      | images/demi.png      | 7k    |
 | mon      | Mon       | images/mon.png       | 14k   |
 | joseluis | Jose Luis | images/boardgame.png | 17k   |
 
