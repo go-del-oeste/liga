@@ -1,15 +1,15 @@
 ## Jugadores
-| id       | Nombre    | Imagen               | Nivel |
-| -------- | --------- | -------------------- | ----- |
-| fercho   | Fercho    | images/fercho.png    | 10k   |
-| timon    | Timón     | images/timon.png     | 15k   |
-| jose     | Jose      | images/jose.png      | 6k    |
-| mamen    | Mamen     | images/mamen.png     | 16k   |
-| rolo     | Rolo      | images/rolo.jpg      | 15k   |
-| raul     | Raúl      | images/raul.jpg      | 10k   |
-| demi     | Demi      | images/demi.png      | 7k    |
-| mon      | Mon       | images/mon.png       | 14k   |
-| joseluis | Jose Luis | images/boardgame.png | 17k   |
+| id       | Nombre    | Imagen              | Nivel |
+| -------- | --------- | ------------------- | ----- |
+| fercho   | Fercho    | images/fercho.png   | 10k   |
+| timon    | Timón     | images/timon.png    | 15k   |
+| jose     | Jose      | images/jose.png     | 6k    |
+| mamen    | Mamen     | images/mamen.png    | 16k   |
+| rolo     | Rolo      | images/rolo.jpg     | 15k   |
+| raul     | Raúl      | images/raul.jpg     | 10k   |
+| demi     | Demi      | images/demi.png     | 7k    |
+| mon      | Mon       | images/mon.png      | 14k   |
+| joseluis | Jose Luis | images/joseluis.png | 17k   |
 
 
 ## Calendario
