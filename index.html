@@ -132,6 +132,8 @@ function renderJornada(jornadaName, matches, players){
   const winner=res==='W'?`Ganó: <strong>${wb}</strong> ${diff}`:res==='B'?`Ganó: <strong>${wn}</strong> ${diff}`:'Pendiente';
   const winnerClassB = res==='W' ? 'winner-glow' : '';
   const winnerClassN = res==='B' ? 'winner-glow' : '';
+  const ogsLink = (m['Ogs'] > 0) ? `<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target="_blank" href="https://online-go.com/game/${m['Ogs']}">OGS</a>`:''
+  
 
   el.innerHTML=`
     <div class='text-center mt-1'>${m['Fecha']}</div>
@@ -147,7 +149,9 @@ function renderJornada(jornadaName, matches, players){
       </div>
     </div>
     <div class='text-center mt-1'>${winner}</div>
-    <div class='text-gray-500'>${m['Observaciones']||''}</div>
+    <div class='text-center mt-1'>${ogsLink}</div>
+    
+    <div class='text-center text-gray-500'>${m['Observaciones']||''}</div>
   `;
   list.appendChild(el);
 });

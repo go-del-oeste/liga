@@ -15,12 +15,13 @@
 ## Calendario
 
 ### Jornada 1 Actual (2025-10-06)
-| Fecha            | Blanco | Negro | Resultado | Observaciones | Diferencia |
-| ---------------- | ------ | ----- | --------- | ------------- | ---------- |
-| 2025-10-06 20:00 | fercho | timon |           |               |            |
-| 2025-10-06 20:00 | jose   | mamen |           |               |            |
-| 2025-10-09 17:00 | raul   | rolo  | W         | Handicap 5 - 20m 1 Byoyomi 1m - OGS https://online-go.com/game/80100405               | 1.5           |
-| 2025-10-06 20:00 | demi   | mon   |           |               |            |
+| Fecha            | Blanco | Negro | Resultado | Observaciones                 | Diferencia | Ogs      |
+| ---------------- | ------ | ----- | --------- | ----------------------------- | ---------- | -------- |
+| 2025-10-06 20:00 | fercho | timon |           |                               |            |          |
+| 2025-10-06 20:00 | jose   | mamen |           |                               |            |          |
+| 2025-10-09 17:00 | raul   | rolo  | W         | Handicap 5 - 20m 1 Byoyomi 1m | 1.5        | 80100405 |
+| 2025-10-06 20:00 | demi   | mon   |           |                               |            |          |
+
 
 - 1 [6O] Fercho vs Timón; Jose vs Mamen; Raúl vs Rolo; Demi vs Mon; José Luis descansa
 
