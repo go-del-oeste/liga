@@ -19,7 +19,7 @@
 | ---------------- | ------ | ----- | --------- | ------------- | ---------- |
 | 2025-10-06 20:00 | fercho | timon |           |               |            |
 | 2025-10-06 20:00 | jose   | mamen |           |               |            |
-| 2025-10-09 17:00 | raul   | rolo  |           |               |            |
+| 2025-10-09 17:00 | raul   | rolo  | W         | Handicap 5 - 20m 1 Byoyomi 1m - OGS https://online-go.com/game/80100405               | 1.5           |
 | 2025-10-06 20:00 | demi   | mon   |           |               |            |
 
 - 1 [6O] Fercho vs Timón; Jose vs Mamen; Raúl vs Rolo; Demi vs Mon; José Luis descansa
@@ -109,5 +109,6 @@
 | 2025-12-01 20:00 | mon    | mamen    |           |               |            |
 | 2025-12-01 20:00 | rolo   | timon    |           |               |            |
 | 2025-12-01 20:00 | jose   | raul     |           |               |            |
+
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
