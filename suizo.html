@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Torneo Suizo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto bg-white shadow rounded-xl p-6">
+    <h1 class="text-2xl font-bold mb-4">🏆 Gestor de Torneo Suizo</h1>
+
+    <!-- Nombre del torneo -->
+    <div class="mb-4">
+      <label class="block font-semibold mb-1">Nombre del torneo</label>
+      <input id="nombre" class="border p-2 w-full rounded" placeholder="Ej. Torneo de Primavera 2025">
+    </div>
+
+    <!-- Importación rápida -->
+    <div class="mb-4">
+      <label class="block font-semibold mb-1">Importar jugadores (nombre,nivel;...)</label>
+      <textarea id="importInput" class="border p-2 w-full rounded text-sm" rows="2"
+        placeholder="Ejemplo: Fercho,10k; Timón,15k; Jose,6k; Mamen,16k"></textarea>
+      <button id="importBtn" class="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+        📥 Importar jugadores
+      </button>
+    </div>
+
+    <!-- Lista de jugadores -->
+    <h2 class="text-xl font-semibold mb-2">Jugadores</h2>
+    <div id="jugadoresContainer" class="space-y-2 mb-3"></div>
+    <button id="addPlayer" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">➕ Añadir jugador</button>
+
+    <hr class="my-4">
+
+    <!-- Botones de control -->
+    <div class="flex gap-3 mb-4 flex-wrap">
+      <button id="start" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">🚀 Iniciar torneo</button>
+      <button id="nextRound" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" disabled>➡️ Siguiente ronda</button>
+      <button id="export" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700" disabled>📝 Mostrar Markdown</button>
+    </div>
+
+    <!-- Zona principal -->
+    <div id="tournamentArea"></div>
+
+    <!-- Resultado Markdown -->
+    <div id="markdownArea" class="mt-6 hidden">
+      <h2 class="text-xl font-semibold mb-2">📄 Markdown generado</h2>
+      <textarea id="markdownOutput" class="border w-full p-2 rounded font-mono text-sm" rows="20"></textarea>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('jugadoresContainer');
+    const addPlayerBtn = document.getElementById('addPlayer');
+    const importBtn = document.getElementById('importBtn');
+    const importInput = document.getElementById('importInput');
+    const startBtn = document.getElementById('start');
+    const nextRoundBtn = document.getElementById('nextRound');
+    const exportBtn = document.getElementById('export');
+    const area = document.getElementById('tournamentArea');
+    const markdownArea = document.getElementById('markdownArea');
+    const markdownOutput = document.getElementById('markdownOutput');
+    const LS_KEY = 'torneo_suizo_data';
+
+    function createPlayerRow(nombre='', nivel='') {
+      const div = document.createElement('div');
+      div.className = 'flex gap-2';
+      div.innerHTML = `
+        <input placeholder="Nombre" value="${nombre}" class="border p-2 flex-1 rounded">
+        <input placeholder="Nivel (ej. 10k)" value="${nivel}" class="border p-2 w-24 rounded">
+        <button class="bg-red-500 text-white px-3 rounded">✖</button>
+      `;
+      div.querySelector('button').onclick = () => div.remove();
+      return div;
+    }
+
+    addPlayerBtn.onclick = () => container.appendChild(createPlayerRow());
+
+    importBtn.onclick = () => {
+      const text = importInput.value.trim();
+      if (!text) return alert("Introduce una cadena de jugadores.");
+      const jugadores = text.split(";").map(s => s.trim()).filter(Boolean);
+      jugadores.forEach(j => {
+        const [nombre, nivel] = j.split(",").map(v => v.trim());
+        if (nombre) container.appendChild(createPlayerRow(nombre, nivel || ''));
+      });
+    };
+
+    function normalizeId(name) {
+      return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '');
+    }
+
+    // ==== Estado general ====
+    let state = { nombre: '', jugadores: [], rondas: [] };
+
+    function guardar() {
+      localStorage.setItem(LS_KEY, JSON.stringify(state));
+    }
+
+    function cargar() {
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) state = JSON.parse(saved);
+    }
+
+    function nivelToNumber(nivel){
+      const num = parseInt(nivel);
+      if (nivel.endsWith('k')) return num + 100; // 30k=130 > 10k=110
+      if (nivel.endsWith('d')) return 100 - num; // 1d=99 < 9d=91
+      return 999;
+    }
+
+    function generarEmparejamientos() {
+      const jugadoresOrdenados = [...state.jugadores].sort((a,b)=>{
+        if (b.puntos !== a.puntos) return b.puntos - a.puntos;
+        return a.nivelNum - b.nivelNum;
+      });
+      const matches = [];
+      while (jugadoresOrdenados.length > 1) {
+        const blanco = jugadoresOrdenados.shift();
+        const negro = jugadoresOrdenados.shift();
+        matches.push({ blanco, negro, resultado: '' });
+      }
+      if (jugadoresOrdenados.length === 1)
+        matches.push({ blanco: jugadoresOrdenados[0], negro: null, resultado: 'bye' });
+      return matches;
+    }
+
+    function renderRonda(rondaNum) {
+      const ronda = state.rondas[rondaNum - 1];
+      area.innerHTML = `
+        <h2 class="text-xl font-bold mb-3">🌀 Ronda ${rondaNum}</h2>
+        <div class="space-y-3">
+          ${ronda.matches.map((m,i)=>`
+            <div class="flex items-center justify-between border p-2 rounded">
+              <div>
+                <strong>${m.blanco.nombre}</strong> (${m.blanco.nivel}) vs 
+                ${m.negro ? `<strong>${m.negro.nombre}</strong> (${m.negro.nivel})` : '<em>Descansa</em>'}
+              </div>
+              ${m.negro ? `
+                <select data-match="${i}" class="border p-1 rounded">
+                  <option value="">Pendiente</option>
+                  <option value="B">Gana ${m.blanco.nombre}</option>
+                  <option value="N">Gana ${m.negro.nombre}</option>
+                </select>
+              ` : '<span class="text-sm text-gray-500">(Bye)</span>'}
+            </div>
+          `).join('')}
+        </div>
+      `;
+      area.querySelectorAll('select').forEach(sel=>{
+        sel.onchange = e=>{
+          const idx = +e.target.dataset.match;
+          state.rondas[rondaNum-1].matches[idx].resultado = e.target.value;
+          guardar();
+        };
+      });
+    }
+
+    startBtn.onclick = ()=>{
+      const nombre = document.getElementById('nombre').value.trim();
+      const jugadores = [...container.querySelectorAll('div')]
+        .map(div=>{
+          const [n,l] = [...div.querySelectorAll('input')].map(i=>i.value.trim());
+          return n ? { id: normalizeId(n), nombre: n, nivel: l, nivelNum: nivelToNumber(l), puntos: 0 } : null;
+        }).filter(Boolean);
+      if (jugadores.length < 2) return alert('Debes añadir al menos dos jugadores.');
+
+      state = { nombre, jugadores, rondas: [] };
+      const matches = generarEmparejamientos();
+      state.rondas.push({ num: 1, matches });
+      guardar();
+      renderRonda(1);
+      nextRoundBtn.disabled = false;
+      exportBtn.disabled = false;
+    };
+
+    nextRoundBtn.onclick = ()=>{
+      const last = state.rondas[state.rondas.length-1];
+      last.matches.forEach(m=>{
+        if (m.resultado==='B') m.blanco.puntos += 1;
+        if (m.resultado==='N') m.negro.puntos += 1;
+        if (m.resultado==='bye') m.blanco.puntos += 1;
+      });
+      const matches = generarEmparejamientos();
+      state.rondas.push({ num: state.rondas.length+1, matches });
+      guardar();
+      renderRonda(state.rondas.length);
+    };
+
+    exportBtn.onclick = ()=>{
+      let md = `---\ntipo: suizo\nnombre: ${state.nombre}\nrondas: ${state.rondas.length}\n---\n\n`;
+      md += `## Jugadores\n| id | Nombre | Nivel | Puntos |\n|----|---------|--------|--------|\n`;
+      md += state.jugadores.map(j=>`| ${j.id} | ${j.nombre} | ${j.nivel} | ${j.puntos} |`).join('\n');
+      md += `\n\n## Rondas\n`;
+      state.rondas.forEach(r=>{
+        md += `### Ronda ${r.num}\n| Blanco | Negro | Resultado |\n|---------|--------|------------|\n`;
+        md += r.matches.map(m=>{
+          let res = '';
+          if (m.resultado==='B') res = `Gana ${m.blanco.nombre}`;
+          else if (m.resultado==='N') res = `Gana ${m.negro.nombre}`;
+          else if (m.resultado==='bye') res = 'Bye';
+          else res = 'Pendiente';
+          return `| ${m.blanco.nombre} | ${m.negro?m.negro.nombre:'-'} | ${res} |`;
+        }).join('\n');
+        md += `\n\n`;
+      });
+
+      markdownOutput.value = md;
+      markdownArea.classList.remove('hidden');
+      markdownOutput.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // Inicialización
+    cargar();
+    if (state.rondas.length) {
+      renderRonda(state.rondas.length);
+      nextRoundBtn.disabled = false;
+      exportBtn.disabled = false;
+    } else {
+      container.appendChild(createPlayerRow());
+    }
+  </script>
+</body>
+</html>

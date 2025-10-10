@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Temporada</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6 bg-gray-100 min-h-screen">
+  <div class="max-w-3xl mx-auto bg-white rounded-xl shadow p-6">
+    <h1 class="text-2xl font-bold mb-4">⚙️ Generador de Temporada de Liga</h1>
+
+    <label class="block mb-2 font-semibold">Nombre de la temporada</label>
+    <input id="nombreTemporada" class="border p-2 w-full mb-4 rounded" placeholder="Ej. Liga Otoño 2025">
+
+    <label class="block mb-2 font-semibold">Jugadores</label>
+    <div id="jugadoresContainer" class="space-y-2 mb-4"></div>
+
+    <button id="addPlayer" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">➕ Añadir jugador</button>
+
+    <hr class="my-4">
+
+    <button id="generate" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">📝 Generar Markdown</button>
+
+    <h2 class="text-xl font-semibold mt-6">Resultado:</h2>
+    <textarea id="output" class="w-full h-96 p-2 border rounded font-mono mt-2"></textarea>
+  </div>
+
+  <script>
+    const container = document.getElementById('jugadoresContainer');
+    const addPlayerBtn = document.getElementById('addPlayer');
+    const output = document.getElementById('output');
+
+    function createPlayerRow() {
+      const div = document.createElement('div');
+      div.className = 'flex gap-2';
+      div.innerHTML = `
+        <input placeholder="Nombre" class="border p-2 flex-1 rounded">
+        <input placeholder="Nivel (ej. 10k)" class="border p-2 w-24 rounded">
+        <button class="bg-red-500 text-white px-3 rounded">✖</button>
+      `;
+      div.querySelector('button').onclick = () => div.remove();
+      return div;
+    }
+
+    addPlayerBtn.onclick = () => container.appendChild(createPlayerRow());
+    container.appendChild(createPlayerRow()); // uno por defecto
+
+    function normalizeId(name) {
+      return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '');
+    }
+
+    function generarJornadas(jugadores) {
+      const jornadas = [];
+      const n = jugadores.length;
+      const rondas = n % 2 === 0 ? n - 1 : n;
+      const players = [...jugadores];
+      if (n % 2 !== 0) players.push("Descansa");
+
+      for (let i = 0; i < rondas; i++) {
+        const matches = [];
+        for (let j = 0; j < n / 2; j++) {
+          const blanco = players[j];
+          const negro = players[n - 1 - j];
+          if (blanco !== "Descansa" && negro !== "Descansa") {
+            matches.push(`| TBD | ${blanco.id} | ${negro.id} | | | |`);
+          }
+        }
+        jornadas.push({ ronda: i + 1, matches });
+        players.splice(1, 0, players.pop()); // rotación
+      }
+
+      return jornadas;
+    }
+
+    document.getElementById('generate').onclick = () => {
+      const nombre = document.getElementById('nombreTemporada').value || 'Nueva Temporada';
+      const jugadores = [...container.querySelectorAll('div')]
+        .map(div => {
+          const [nombre, nivel] = [...div.querySelectorAll('input')].map(i => i.value.trim());
+          if (!nombre) return null;
+          return { id: normalizeId(nombre), nombre, nivel: nivel || '' };
+        }).filter(Boolean);
+
+      const jornadas = generarJornadas(jugadores);
+
+      const md = [
+        `---`,
+        `tipo: liga`,
+        `nombre: ${nombre}`,
+        `rondas: ${jornadas.length}`,
+        `---`,
+        ``,
+        `## Jugadores`,
+        `| id | Nombre | Imagen | Nivel |`,
+        `|----|---------|---------|-------|`,
+        jugadores.map(j => `| ${j.id} | ${j.nombre} | images/${j.id}.jpg | ${j.nivel} |`).join('\n'),
+        ``,
+        `## Calendario`,
+        ...jornadas.map(j =>
+          `### Jornada ${j.ronda}\n| Fecha | Blanco | Negro | Resultado | Observaciones | Diferencia |\n|--------|---------|--------|------------|----------------|------------|\n${j.matches.join('\n')}\n`
+        )
+      ].join('\n');
+
+      output.value = md;
+    };
+  </script>
+</body>
+</html>
