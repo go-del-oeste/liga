@@ -11,16 +11,17 @@
 | mon      | Mon       | images/mon.png      | 14k   |
 | joseluis | Jose Luis | images/joseluis.png | 17k   |
 
+ - 20m 1 Byoyomi 1m
 
 ## Calendario
 
 ### Jornada 1 Actual (2025-10-06)
-| Fecha            | Blanco | Negro | Resultado | Observaciones                 | Diferencia | Ogs      |
-| ---------------- | ------ | ----- | --------- | ----------------------------- | ---------- | -------- |
-| 2025-10-06 20:00 | fercho | timon |           |                               |            |          |
-| 2025-10-06 20:00 | jose   | mamen | W         | Handicap 9 - 20m 1 Byoyomi 1m | 70.5       |          |
-| 2025-10-09 17:00 | raul   | rolo  | W         | Handicap 5 - 20m 1 Byoyomi 1m | 1.5        | 80100405 |
-| 2025-10-06 20:00 | demi   | mon   |           |                               |            |          |
+| Fecha            | Blanco | Negro | Resultado | Observaciones | Diferencia | Ogs      |
+| ---------------- | ------ | ----- | --------- | ------------- | ---------- | -------- |
+| 2025-10-?? ??:?? | fercho | timon |           |               |            |          |
+| 2025-10-09 20:00 | jose   | mamen | W         | Handicap 9    | 70.5       |          |
+| 2025-10-09 17:00 | raul   | rolo  | W         | Handicap 5    | 1.5        | 80100405 |
+| 2025-10-?? ??:?? | demi   | mon   |           |               |            |          |
 
 
 - 1 [6O] Fercho vs Timón; Jose vs Mamen; Raúl vs Rolo; Demi vs Mon; José Luis descansa
