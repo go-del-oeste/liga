@@ -18,7 +18,7 @@
 | Fecha            | Blanco | Negro | Resultado | Observaciones                 | Diferencia | Ogs      |
 | ---------------- | ------ | ----- | --------- | ----------------------------- | ---------- | -------- |
 | 2025-10-06 20:00 | fercho | timon |           |                               |            |          |
-| 2025-10-06 20:00 | jose   | mamen |           |                               |            |          |
+| 2025-10-06 20:00 | jose   | mamen | W         | Handicap 9 - 20m 1 Byoyomi 1m | 70.5       |          |
 | 2025-10-09 17:00 | raul   | rolo  | W         | Handicap 5 - 20m 1 Byoyomi 1m | 1.5        | 80100405 |
 | 2025-10-06 20:00 | demi   | mon   |           |                               |            |          |
 
@@ -113,3 +113,4 @@
 
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
+
