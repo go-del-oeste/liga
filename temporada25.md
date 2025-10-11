@@ -10,7 +10,7 @@
 | demi     | Demi      | images/demi.png     | 7k    |
 | mon      | Mon       | images/mon.png      | 14k   |
 | joseluis | Jose Luis | images/joseluis.png | 17k   |
-| lope     | Lope    | images/boardgame.png      | 15k   |
+| lope     | Lope    | images/lope.jpg      | 15k   |
 
  - 20m 1 Byoyomi 1m
 
@@ -22,7 +22,7 @@
 | 2025-10-?? ??:?? | fercho | timon |           |               |            |          |
 | 2025-10-09 20:00 | jose   | mamen | W         | Handicap 9    | 70.5       |          |
 | 2025-10-09 17:00 | raul   | rolo  | W         | Handicap 5    | 1.5        | 80100405 |
-| 2025-10-?? ??:?? | demi   | mon   |           |               |            |          |
+| 2025-10-11 18:30 | demi   | mon   | B         | Handicap 9             | 38.5          |  80165253        |
 | 2025-10-?? ??:?? | lope   | joseluis  |           |               |            |          |
 
 
@@ -116,5 +116,6 @@
 
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
+
 
 
