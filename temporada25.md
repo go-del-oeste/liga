@@ -16,10 +16,10 @@
 
 ## Calendario
 
-### Jornada 1 Actual (2025-10-06)
+### Jornada 1 (2025-10-06)
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs      |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | -------- |
-| 2025-10-?? ??:?? | fercho | timon    |  W         |     Handicap 5          |    45.5        |   80325092       |
+| 2025-10-?? ??:?? | fercho | timon    | W         | Handicap 5    | 45.5       | 80325092 |
 | 2025-10-09 20:00 | jose   | mamen    | W         | Handicap 9    | 70.5       |          |
 | 2025-10-09 17:00 | raul   | rolo     | W         | Handicap 5    | 1.5        | 80100405 |
 | 2025-10-11 18:30 | demi   | mon      | B         | Handicap 9    | 38.5       | 80165253 |
@@ -29,7 +29,7 @@
 - 1 [6O] Fercho vs Timón; Jose vs Mamen; Raúl vs Rolo; Demi vs Mon; José Luis descansa
 
 
-### Jornada 2 (2025-10-13)
+### Jornada 2 Actual (2025-10-13)
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-10-13 20:00 | mon    | joseluis |           |               |            |     |
