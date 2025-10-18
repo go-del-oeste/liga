@@ -93,14 +93,14 @@ function renderStandings(rows){
   const tb=document.createElement('tbody');
   rows.forEach((r,i)=>{
     const tr=document.createElement('tr'); tr.className='border-t';
-    tr.innerHTML=`<td>${i+1}</td><td>${r.Nombre}</td><td>${r.PJ}</td><td>${r.G}</td><td>${r.P}</td><td>${r.Diff}</td><td><strong>${r.Pts}</strong></td>`;
+    tr.innerHTML=`<td>${i+1}</td><td>${r.Nombre} (${r.Nivel})</td><td>${r.PJ}</td><td>${r.G}</td><td>${r.P}</td><td>${r.Diff}</td><td><strong>${r.Pts}</strong></td>`;
     tb.appendChild(tr);
   });
   table.appendChild(tb); el.appendChild(table);
 }
 
 function computeStandings(sections, players){
-  const stats={}; Object.values(players).forEach(p=>stats[p.id]={id:p.id,Nombre:p.Nombre,PJ:0,G:0,P:0,Diff:0,Pts:0});
+  const stats={}; Object.values(players).forEach(p=>stats[p.id]={id:p.id,Nombre:p.Nombre,Nivel:p.Nivel,PJ:0,G:0,P:0,Diff:0,Pts:0});
   Object.keys(sections).filter(k=>k.toLowerCase().includes('jornada')).forEach(jk=>{
     const matches=parseTable(sections[jk]);
     matches.forEach(m=>{
