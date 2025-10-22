@@ -7,7 +7,7 @@
 | mamen    | Mamen     | images/mamen.png    | 16k   |
 | rolo     | Rolo      | images/rolo.jpg     | 15k   |
 | raul     | Raúl      | images/raul.jpg     | 10k   |
-| demi     | Demi      | images/demi2.png    | 7k    |
+| demi     | Demi      | images/demi2.jpg    | 7k    |
 | mon      | Mon       | images/mon.png      | 14k   |
 | joseluis | Jose Luis | images/joseluis.png | 17k   |
 | lope     | Lope      | images/lope.jpg     | 15k   |
