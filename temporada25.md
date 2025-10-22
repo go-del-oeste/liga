@@ -7,7 +7,7 @@
 | mamen    | Mamen     | images/mamen.png    | 16k   |
 | rolo     | Rolo      | images/rolo.jpg     | 15k   |
 | raul     | Raúl      | images/raul.jpg     | 10k   |
-| demi     | Demi      | images/demi.png     | 7k    |
+| demi     | Demi      | images/demi2.png    | 7k    |
 | mon      | Mon       | images/mon.png      | 14k   |
 | joseluis | Jose Luis | images/joseluis.png | 17k   |
 | lope     | Lope      | images/lope.jpg     | 15k   |
@@ -30,13 +30,13 @@
 
 
 ### Jornada 2 Actual (2025-10-13)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
-| ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
-| 2025-10-13 20:00 | mon    | joseluis |           |               |            |     |
-| 2025-10-13 20:00 | demi   | jose     |           |               |            |     |
-| 2025-10-13 20:00 | raul   | fercho   |           |               |            |     |
-| 2025-10-13 20:00 | rolo   | mamen    |           |               |            |     |
-| 2025-10-13 20:00 | timon  | lope     |           |               |            |     |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS      |
+| ---------------- | ------ | -------- | --------- | ------------- | ---------- | -------- |
+| 2025-10-13 20:00 | mon    | joseluis |           |               |            |          |
+| 2025-10-13 20:00 | demi   | jose     |           |               |            |          |
+| 2025-10-13 20:00 | raul   | fercho   |           |               |            |          |
+| 2025-10-13 20:00 | rolo   | mamen    |           |               |            |          |
+| 2025-10-22 21:00 | lope   | timon    | W         |               | 20.5       | 80518250 |
 
 - 2 [13O] Mon vs José Luis; Demi vs Jose; Raúl vs Fercho; Rolo vs Mamen; Timón descansa
 
