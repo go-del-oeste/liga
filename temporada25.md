@@ -30,7 +30,7 @@
 
 
 ### Jornada 2 Actual (2025-10-13)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS      |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs      |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | -------- |
 | 2025-10-13 20:00 | mon    | joseluis |           |               |            |          |
 | 2025-10-13 20:00 | demi   | jose     |           |               |            |          |
@@ -42,7 +42,7 @@
 
 
 ### Jornada 3 (2025-10-20)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-10-20 20:00 | timon  | joseluis |           |               |            |     |
 | 2025-10-20 20:00 | jose   | mon      |           |               |            |     |
@@ -55,7 +55,7 @@
 
 
 ### Jornada 4 (2025-10-27)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-10-27 20:00 | jose   | joseluis |           |               |            |     |
 | 2025-10-27 20:00 | raul   | timon    |           |               |            |     |
@@ -67,7 +67,7 @@
 
 
 ### Jornada 5 (2025-11-03)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-11-03 20:00 | raul   | joseluis |           |               |            |     |
 | 2025-11-03 20:00 | jose   | rolo     |           |               |            |     |
@@ -79,7 +79,7 @@
 
 
 ### Jornada 6 (2025-11-10)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-11-10 20:00 | rolo   | joseluis |           |               |            |     |
 | 2025-11-10 20:00 | raul   | mamen    |           |               |            |     |
@@ -92,7 +92,7 @@
 
 
 ### Jornada 7 (2025-11-17)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-11-17 20:00 | jose   | lope     |           |               |            |     |
 | 2025-11-17 20:00 | mamen  | joseluis |           |               |            |     |
@@ -104,7 +104,7 @@
 
 
 ### Jornada 8 (2025-11-24)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-11-24 20:00 | fercho | joseluis |           |               |            |     |
 | 2025-11-24 20:00 | demi   | mamen    |           |               |            |     |
@@ -116,7 +116,7 @@
 
 
 ### Jornada 9 (2025-12-01)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | OGS |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-12-01 20:00 | demi   | joseluis |           |               |            |     |
 | 2025-12-01 20:00 | mon    | mamen    |           |               |            |     |
@@ -126,6 +126,7 @@
 
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
+
 
 
 
