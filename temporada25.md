@@ -33,7 +33,7 @@
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs      |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | -------- |
 | 2025-10-13 20:00 | mon    | joseluis |           |               |            |          |
-| 2025-10-13 20:00 | demi   | jose     |           |               |            |          |
+| 2025-10-13 20:00 | jose   | demi     |           |               |            |          |
 | 2025-10-13 20:00 | raul   | fercho   |           |               |            |          |
 | 2025-10-13 20:00 | rolo   | mamen    |           |               |            |          |
 | 2025-10-22 21:00 | lope   | timon    | W         |               | 20.5       | 80518250 |
@@ -126,6 +126,7 @@
 
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
+
 
 
 
