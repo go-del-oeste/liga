@@ -23,7 +23,7 @@
 | 2025-10-09 20:00 | jose   | mamen    | W         | Handicap 9    | 70.5       |          |
 | 2025-10-09 17:00 | raul   | rolo     | W         | Handicap 5    | 1.5        | 80100405 |
 | 2025-10-11 18:30 | demi   | mon      | B         | Handicap 9    | 38.5       | 80165253 |
-| 2025-10-?? ??:?? | lope   | joseluis | B         | Handicap 2    | 1.5        | 80920506 |
+| 2025-10-?? ??:?? | lope   | joseluis |           |               |            |          |
 
 
 - 1 [6O] Fercho vs Timón; Jose vs Mamen; Raúl vs Rolo; Demi vs Mon; José Luis descansa
@@ -44,8 +44,8 @@
 ### Jornada 3 (2025-10-20)
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
-| 2025-10-20 20:00 | timon  | joseluis |           |               |            |     |
-| 2025-10-20 20:00 | jose   | mon      | W         |               | 83         | 80709607    |
+| 2025-10-20 20:00 | timon  | joseluis | B         | Handicap 2    | 1.5        | 80920506 |
+| 2025-10-20 20:00 | jose   | mon      | W         |               | 83         | 80709607 |
 | 2025-10-20 20:00 | demi   | rolo     | W         |               | 52         |     |
 | 2025-10-20 20:00 | fercho | mamen    |           |               |            |     |
 | 2025-10-20 20:00 | raul   | lope     |           |               |            |     |
@@ -126,6 +126,7 @@
 
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
+
 
 
 
