@@ -57,7 +57,7 @@
 ### Jornada 4 (2025-10-27)
 | Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
-| 2025-10-27 20:00 | jose   | joseluis |           |               |            |     |
+| 2025-10-27 20:00 | jose   | joseluis | B         | Handicap 9    | 0.5        |     |
 | 2025-10-27 20:00 | raul   | timon    |           |               |            |     |
 | 2025-10-27 20:00 | rolo   | mon      |           |               |            |     |
 | 2025-10-27 20:00 | lope   | mamen    |           |               |            |     |
@@ -126,6 +126,7 @@
 
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
+
 
 
 
