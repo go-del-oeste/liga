@@ -35,7 +35,7 @@
 | 2025-10-13 20:00 | mon    | joseluis |           |               |            |          |
 | 2025-10-13 20:00 | jose   | demi     | W         |               |            |          |
 | 2025-10-13 20:00 | raul   | fercho   |           |               |            |          |
-| 2025-10-13 20:00 | rolo   | mamen    |           |               |            |          |
+| 2025-10-13 20:00 | rolo   | mamen    | B          | Handicap 0  | 63           |          |
 | 2025-10-22 21:00 | lope   | timon    | W         |               | 20.5       | 80518250 |
 
 - 2 [13O] Mon vs José Luis; Demi vs Jose; Raúl vs Fercho; Rolo vs Mamen; Timón descansa
@@ -61,7 +61,7 @@
 | 2025-10-27 20:00 | raul   | timon    |           |               |            |     |
 | 2025-10-27 20:00 | rolo   | mon      |           |               |            |     |
 | 2025-10-27 20:00 | lope   | mamen    |           |               |            |     |
-| 2025-10-27 20:00 | fercho | demi     |           |               |            |     |
+| 2025-10-27 20:00 | fercho | demi     | W          | Handicap 3 | 30           |     |
 
 - 4 [27O] Jose vs José Luis; Raúl vs Timón; Rolo vs Mon; Fercho vs Demi; Mamen descansa
 
@@ -71,7 +71,7 @@
 | ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
 | 2025-11-03 20:00 | raul   | joseluis |           |               |            |     |
 | 2025-11-03 20:00 | jose   | rolo     |           |               |            |     |
-| 2025-11-03 20:00 | demi   | lope     |           |               |            |     |
+| 2025-11-03 20:00 | demi   | lope     | W          | Handicap 7 |            | 81415601 |
 | 2025-11-03 20:00 | timon  | mamen    |           |               |            |     |
 | 2025-11-03 20:00 | fercho | mon      |           |               |            |     |
 
@@ -126,6 +126,7 @@
 
 
 - 9 [1D] Demi vs José Luis; Mon vs Mamen; Rolo vs Timón; Jose vs Raúl; Fercho descansa
+
 
 
 
