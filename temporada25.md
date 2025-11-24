@@ -42,13 +42,13 @@
 
 
 ### Jornada 3 (2025-10-20)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
-| ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs      |
+| ---------------- | ------ | -------- | --------- | ------------- | ---------- | -------- |
 | 2025-10-20 20:00 | timon  | joseluis | B         | Handicap 2    | 1.5        | 80920506 |
 | 2025-10-20 20:00 | jose   | mon      | W         |               | 83         | 80709607 |
-| 2025-10-20 20:00 | demi   | rolo     | W         |               | 52         |     |
-| 2025-10-20 20:00 | fercho | mamen    |           |               |            |     |
-| 2025-10-20 20:00 | raul   | lope     |           |               |            |     |
+| 2025-10-20 20:00 | demi   | rolo     | W         |               | 52         |          |
+| 2025-10-20 20:00 | fercho | mamen    |           |               |            |          |
+| 2025-10-20 20:00 | raul   | lope     | W         | Handicap 5    | 57         | 81119050 |
 
 
 - 3 [20O] Timón vs José Luis; Jose vs Mon; Demi vs Rolo; Fercho vs Mamen; Raúl descansa
@@ -67,13 +67,13 @@
 
 
 ### Jornada 5 (2025-11-03)
-| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs |
-| ---------------- | ------ | -------- | --------- | ------------- | ---------- | --- |
-| 2025-11-03 20:00 | raul   | joseluis |           |               |            |     |
-| 2025-11-03 20:00 | jose   | rolo     |           |               |            |     |
+| Fecha            | Blanco | Negro    | Resultado | Observaciones | Diferencia | Ogs      |
+| ---------------- | ------ | -------- | --------- | ------------- | ---------- | -------- |
+| 2025-11-03 20:00 | raul   | joseluis |           |               |            |          |
+| 2025-11-03 20:00 | jose   | rolo     |           |               |            |          |
 | 2025-11-03 20:00 | demi   | lope     | W         | Handicap 7    |            | 81415601 |
-| 2025-11-03 20:00 | timon  | mamen    |           |               |            |     |
-| 2025-11-03 20:00 | fercho | mon      |           |               |            |     |
+| 2025-11-03 20:00 | timon  | mamen    |           |               |            |          |
+| 2025-11-03 20:00 | fercho | mon      |           |               |            |          |
 
 - 5 [3N] Raúl vs José Luis; Jose vs Rolo; Timón vs Mamen; Fercho vs Mon; Demi descansa
 
